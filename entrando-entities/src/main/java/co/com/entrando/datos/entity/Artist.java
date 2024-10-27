@@ -1,31 +1,47 @@
 package co.com.entrando.datos.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "artist")
-public class Artist {
+public class Artist implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "artist_id_gen")
-    @SequenceGenerator(name = "artist_id_gen", sequenceName = "artist_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-
-    @Column(name = "name", nullable = false)
+    @GeneratedValue(generator = "sequence-generator-artist")
+    @GenericGenerator(
+            name = "sequence-generator-artist",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "artist_seq"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "1"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            }
+    )
+    private Long id;
+    @Column(name = "name")
     private String name;
-
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "musicband_id")
+    private MusicBand musicBand;
+    public Artist() {
+    }
+    public Artist(Long id, String name, String description, MusicBand musicBand) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.musicBand = musicBand;
+    }
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "musicband_id", nullable = false)
-    private MusicBand musicband;
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,12 +61,11 @@ public class Artist {
         this.description = description;
     }
 
-    public MusicBand getMusicband() {
-        return musicband;
+    public MusicBand getMusicBand() {
+        return musicBand;
     }
 
-    public void setMusicband(MusicBand musicband) {
-        this.musicband = musicband;
+    public void setMusicBand(MusicBand musicBand) {
+        this.musicBand = musicBand;
     }
-
 }

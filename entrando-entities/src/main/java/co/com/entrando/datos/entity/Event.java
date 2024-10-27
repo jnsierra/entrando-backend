@@ -1,82 +1,107 @@
 package co.com.entrando.datos.entity;
 
-import jakarta.persistence.*;
+import co.com.entrando.enumeration.EventStatus;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
-import java.time.Instant;
-import java.util.LinkedHashSet;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedQuery(name = "Event.findByIdAndPresentation", query = """ 
+                                                           from Event event
+                                                          inner join fetch event.presentation as pr 
+                                                          inner join fetch event.configEvents as conEv
+                                                          inner join fetch event.city as cit
+                                                          inner join fetch cit.department as dep
+                                                          inner join fetch dep.country as coun
+                                                          inner join fetch event.categoryEvent as catEve
+                                                          where  event.id = :eventId 
+                                                            and pr.id = :presentationId
+                                                            and conEv.event.id = event.id
+                                                            and conEv.presentation.id = pr.id
+                                                                """)
+@NamedQuery(name = "Event.findByEventStatusAndAfterTodayEvent", query = """
+                                                           FROM Event event
+                                                          WHERE event.eventStatus = :eventStatus
+                                                            AND event.date >= current_date
+        """)
+@NamedQuery(name = "Event.updateEventStatus", query = """
+        Update Event eve
+           set eventStatus = :eventStatus
+         where eve.id = :id
+        """)
+@Getter @Setter
 @Entity
 @Table(name = "event")
-@Getter @Setter
-public class Event {
+public class Event extends Auditable<String> implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_id_gen")
-    @SequenceGenerator(name = "event_id_gen", sequenceName = "event_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-
-    @Column(name = "name", nullable = false)
+    @GeneratedValue(generator = "sequence-generator-event")
+    @GenericGenerator(
+            name = "sequence-generator-event",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @Parameter(name = "sequence_name", value = "event_seq"),
+                    @Parameter(name = "initial_value", value = "1"),
+                    @Parameter(name = "increment_size", value = "1")
+            }
+    )
+    @Column(name = "id", nullable = false, updatable = false)
+    private Long id;
+    @Column(name = "name", nullable = false, updatable = false)
     private String name;
-
-    @Column(name = "place", nullable = false)
+    @Column(name="place")
     private String place;
-
-    @Column(name = "date", nullable = false)
-    private Instant date;
-
-    @Column(name = "time", nullable = false)
+    @Column(name = "date")
+    private LocalDate date;
+    @Column(name = "time")
     private String time;
-
-    @Column(name = "minimum_age", nullable = false)
-    private Integer minimumAge;
-
-    @Column(name = "responsible", nullable = false)
+    @Column(name = "minimum_age")
+    private int minimumAge;
+    @Column(name = "responsible")
     private String responsible;
-
-    @Column(name = "nit", nullable = false)
+    @Column(name = "nit")
     private String nit;
-
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "city_code", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_code", referencedColumnName = "code")
+    @JoinColumn(name = "department_code", referencedColumnName = "department_code")
     private City city;
+    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+    private Set<Presentation> presentation;
+    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+    private Set<ConfigEvent> configEvents;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", length = 8)
+    private EventStatus eventStatus;
+    @OneToMany(mappedBy = "ticketPk.event", fetch = FetchType.LAZY)
+    private Set<Ticket> tickets;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private CategoryEvent categoryEvent;
+    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+    private Set<EventImages> eventImagesEntities;
 
-    @Column(name = "status", nullable = false, length = 15)
-    private String status;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
-    private EventCategory category;
+        Event that = (Event) o;
 
-    @Column(name = "created_by", nullable = false)
-    private String createdBy;
+        return Objects.equals(id, that.id);
+    }
 
-    @Column(name = "created_date", nullable = false)
-    private Instant createdDate;
-
-    @Column(name = "last_modified_by", nullable = false)
-    private String lastModifiedBy;
-
-    @Column(name = "last_modified_date", nullable = false)
-    private Instant lastModifiedDate;
-
-    @OneToMany(mappedBy = "event")
-    private Set<ConfigEvent> configEvents = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "event")
-    private Set<EventImage> eventImages = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "event")
-    private Set<Presentation> presentations = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "event")
-    private Set<Ticket> tickets = new LinkedHashSet<>();
-
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

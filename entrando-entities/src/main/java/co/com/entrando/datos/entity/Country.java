@@ -1,58 +1,40 @@
 package co.com.entrando.datos.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import jakarta.persistence.*;
-
-import java.util.LinkedHashSet;
+import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @Entity
 @Table(name = "country")
-public class Country {
+public class Country implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "country_id_gen")
-    @SequenceGenerator(name = "country_id_gen", sequenceName = "country_seq", allocationSize = 1)
-    @Column(name = "code", nullable = false)
-    private Integer id;
-
-    @Column(name = "name", nullable = false)
+    @Column(name = "code", nullable = false, updatable = false)
+    private Long code;
+    @Column(name = "name")
     private String name;
+    @Column(name = "diminutive_alpha3")
+    private String diminutive;
+    @OneToMany(mappedBy = "country")
+    private Set<Department> departments;
 
-    @Column(name = "diminutive_alpha3", nullable = false, length = 3)
-    private String diminutiveAlpha3;
-
-    @OneToMany(mappedBy = "countryCode")
-    private Set<Department> departments = new LinkedHashSet<>();
-
-    public Integer getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country that = (Country) o;
+        return Objects.equals(code, that.code);
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return Objects.hash(code);
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDiminutiveAlpha3() {
-        return diminutiveAlpha3;
-    }
-
-    public void setDiminutiveAlpha3(String diminutiveAlpha3) {
-        this.diminutiveAlpha3 = diminutiveAlpha3;
-    }
-
-    public Set<Department> getDepartments() {
-        return departments;
-    }
-
-    public void setDepartments(Set<Department> departments) {
-        this.departments = departments;
-    }
-
 }

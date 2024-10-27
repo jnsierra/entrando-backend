@@ -1,4 +1,4 @@
-package co.com.entrando.datos.config;
+package co.com.entrando.security.service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

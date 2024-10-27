@@ -3,6 +3,7 @@ package co.com.entrando.datos.service.impl;
 import co.com.entrando.datos.entity.Event;
 import co.com.entrando.datos.repository.EventRepository;
 import co.com.entrando.datos.service.EventService;
+import co.com.entrando.enumeration.EventStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +35,7 @@ public class EventServiceImpl implements EventService {
     }
     @Transactional
     @Override
-    public Boolean updateEventStatus(Long id, Event eventStatus) {
+    public Boolean updateEventStatus(Long id, EventStatus eventStatus) {
         return eventRepository.updateEventStatus(id, eventStatus.toString()) == 1;
     }
 }

@@ -1,7 +1,8 @@
 package co.com.entrando.datos.repository;
 
 import co.com.entrando.datos.entity.Ticket;
-import co.com.entrando.datos.entity.TicketId;
+import co.com.entrando.datos.entity.TicketPk;
+import co.com.entrando.enumeration.StatusTicket;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -14,13 +15,13 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public interface TicketRepository extends JpaRepository<Ticket, TicketId>, CrudRepository<Ticket, TicketId>, JpaSpecificationExecutor<Ticket> {
+public interface TicketRepository extends JpaRepository<Ticket, TicketPk>, CrudRepository<Ticket, TicketPk>, JpaSpecificationExecutor<Ticket> {
 
     List<Ticket> getByEventIdAndPresentationId(Long eventId, Long presentationId, Pageable pageable);
 
     Integer countByEventIdAndPresentationId(Long eventId, Long presentationId);
     @Modifying
-    Integer updateState(@Param(value = "state") String state,
+    Integer updateState(@Param(value = "state") StatusTicket state,
                         @Param(value = "eventId") Long eventId,
                         @Param(value = "zoneId") Long zoneId,
                         @Param(value = "categoryId") Long categoryId,

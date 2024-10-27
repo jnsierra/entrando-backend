@@ -2,7 +2,7 @@ package co.com.entrando.datos.service;
 
 
 import co.com.entrando.datos.entity.Ticket;
-import co.com.entrando.datos.entity.TicketId;
+import co.com.entrando.datos.entity.TicketPk;
 import co.com.entrando.datos.filtering.SearchRequest;
 import co.com.entrando.dto.TicketViewDto;
 import co.com.entrando.dto.responses.GenericQuery;
@@ -13,7 +13,7 @@ import java.util.Set;
 
 public interface TicketService {
     Ticket save(Ticket ticket);
-    Optional<Ticket> getById(TicketId id);
+    Optional<Ticket> getById(TicketPk id);
     Set<TicketViewDto> getByEventIdAndPresentationId(Long eventId, Long presentationId, Integer records, Integer page);
     Integer countByEventIdAndPresentationId(Long eventId, Long presentationId);
     Integer updateState( StatusTicket state,

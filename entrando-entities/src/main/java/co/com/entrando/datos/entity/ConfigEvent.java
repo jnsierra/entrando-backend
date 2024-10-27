@@ -1,109 +1,73 @@
 package co.com.entrando.datos.entity;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
+import jakarta.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NamedQuery(name = "ConfigEvent.getByEventIdAndPresentation", query = "from ConfigEvent cEvent inner join fetch cEvent.event as eve inner join fetch cEvent.presentation as pr where pr.id = :idPresentation and eve.id = :idEvent")
+@NamedQuery(name = "ConfigEvent.findByEventId", query = "from ConfigEvent cEvent inner join fetch cEvent.event as eve WHERE eve.id = :idEvent ")
 @Entity
 @Table(name = "config_event")
-public class ConfigEvent {
+public class ConfigEvent implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "config_event_id_gen")
-    @SequenceGenerator(name = "config_event_id_gen", sequenceName = "config_event_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "event_id", nullable = false)
+    @GeneratedValue(generator = "sequence-generator-config-event")
+    @GenericGenerator(
+            name = "sequence-generator-config-event",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @Parameter(name = "sequence_name", value = "config_event_seq"),
+                    @Parameter(name = "initial_value", value = "1"),
+                    @Parameter(name = "increment_size", value = "1")
+            }
+    )
+    @Column(name = "id")
+    private Long id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id")
     private Event event;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "presentation_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "presentation_id")
     private Presentation presentation;
-
-    @Column(name = "door_opening", nullable = false)
+    @Column(name = "door_opening")
     private LocalTime doorOpening;
-
-    @Column(name = "event_date", nullable = false)
-    private LocalDate eventDate;
-
-    @Column(name = "number_of_tickets", nullable = false)
+    @Column(name = "number_of_tickets")
     private BigDecimal numberOfTickets;
-
-    @ColumnDefault("0")
-    @Column(name = "number_of_tickets_sold", nullable = false)
+    @Column(name = "number_of_tickets_sold")
     private BigDecimal numberOfTicketsSold;
-
+    @Column(name = "event_date")
+    private LocalDate eventDate;
     @OneToMany(mappedBy = "configEvent")
-    private Set<ZoneConfigEvent> zoneConfigEvents = new LinkedHashSet<>();
+    private Set<ZoneConfigEvent> zoneConfigEvents = new HashSet<>();
 
-    public Integer getId() {
-        return id;
+    public void addZoneConfigEvents(ZoneConfigEvent zoneConfigEvent) {
+        this.zoneConfigEvents.add(zoneConfigEvent);
+        zoneConfigEvent.setConfigEvent(this);
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ConfigEvent that = (ConfigEvent) o;
+
+        return id.equals(that.id);
     }
 
-    public Event getEvent() {
-        return event;
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
-
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    public Presentation getPresentation() {
-        return presentation;
-    }
-
-    public void setPresentation(Presentation presentation) {
-        this.presentation = presentation;
-    }
-
-    public LocalTime getDoorOpening() {
-        return doorOpening;
-    }
-
-    public void setDoorOpening(LocalTime doorOpening) {
-        this.doorOpening = doorOpening;
-    }
-
-    public LocalDate getEventDate() {
-        return eventDate;
-    }
-
-    public void setEventDate(LocalDate eventDate) {
-        this.eventDate = eventDate;
-    }
-
-    public BigDecimal getNumberOfTickets() {
-        return numberOfTickets;
-    }
-
-    public void setNumberOfTickets(BigDecimal numberOfTickets) {
-        this.numberOfTickets = numberOfTickets;
-    }
-
-    public BigDecimal getNumberOfTicketsSold() {
-        return numberOfTicketsSold;
-    }
-
-    public void setNumberOfTicketsSold(BigDecimal numberOfTicketsSold) {
-        this.numberOfTicketsSold = numberOfTicketsSold;
-    }
-
-    public Set<ZoneConfigEvent> getZoneConfigEvents() {
-        return zoneConfigEvents;
-    }
-
-    public void setZoneConfigEvents(Set<ZoneConfigEvent> zoneConfigEvents) {
-        this.zoneConfigEvents = zoneConfigEvents;
-    }
-
 }

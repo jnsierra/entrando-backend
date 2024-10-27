@@ -1,11 +1,11 @@
 package co.com.entrando.datos.service.impl;
 
-import co.com.entrando.datos.entity.Ticket;
-import co.com.entrando.datos.entity.TicketId;
-import co.com.entrando.datos.filtering.JoinEntity;
+import co.com.entrando.datos.entity.*;
 import co.com.entrando.datos.filtering.SearchRequest;
-import co.com.entrando.datos.filtering.SearchSpecification;
 import co.com.entrando.datos.mapper.TicketMapper;
+import co.com.entrando.enumeration.StatusTicket;
+import co.com.entrando.datos.filtering.JoinEntity;
+import co.com.entrando.datos.filtering.SearchSpecification;
 import co.com.entrando.datos.repository.TicketRepository;
 import co.com.entrando.datos.service.ConfigEventService;
 import co.com.entrando.datos.service.TicketService;
@@ -15,7 +15,6 @@ import co.com.entrando.dto.responses.GenericQuery;
 import co.com.entrando.exception.BusinessException;
 import co.com.entrando.exception.enumeration.TYPE_EXCEPTION;
 import co.com.entrando.security.service.UserLoggerService;
-import co.com.entrando.enumeration.StatusTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,7 +37,9 @@ public class TicketServiceImpl implements TicketService {
     private final BiFunction<SearchSpecification<Ticket>, Pageable, Page<Ticket>> findAllTicket = (specification, pageable) -> ticketRepository.findAll(specification, pageable);
 
     @Autowired
-    public TicketServiceImpl(TicketRepository ticketRepository, UserLoggerService userLoggerService, ConfigEventService configEventService, ZoneConfigEventService zoneConfigEventService) {
+    public TicketServiceImpl(TicketRepository ticketRepository,
+                             UserLoggerService userLoggerService,
+                             ConfigEventService configEventService, ZoneConfigEventService zoneConfigEventService) {
         this.ticketRepository = ticketRepository;
         this.userLoggerService = userLoggerService;
         this.configEventService = configEventService;
@@ -51,7 +52,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Optional<Ticket> getById(TicketId id) {
+    public Optional<Ticket> getById(TicketPk id) {
         return ticketRepository.findById(id);
     }
 
@@ -70,24 +71,35 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public Integer updateState(StatusTicket state, Long eventId, Long zoneId, Long categoryId, Long presentationId, Long numberTicket, String confirmationNumber, String user) {
-        return ticketRepository.updateState(state.toString(), eventId, zoneId, categoryId, presentationId, numberTicket, confirmationNumber, user);
+        //return ticketRepository.updateState(state, eventId, zoneId, categoryId, presentationId, numberTicket, confirmationNumber, user);
+        return 0;
     }
 
     @Override
     @Transactional
     public Optional<Ticket> buyTicket(StatusTicket state, Long eventId, Long zoneId, Long categoryId, Long presentationId, Long numberTicket) {
-        Integer update = this.updateState(state, eventId, zoneId, categoryId, presentationId, numberTicket, this.getAlphaNumericString(40), userLoggerService.getUserLogger());
+        Integer update = this.updateState(state, eventId, zoneId, categoryId, presentationId, numberTicket, this.getAlphaNumericString(40),
+               userLoggerService.getUserLogger()
+        );
         if (update != 1) {
             throw new BusinessException(1L, TYPE_EXCEPTION.ERROR, "Se genero actualizacion a mas de un registro");
         }
-        Optional<Ticket> ticketEntity = this.getById(TicketId.builder()
-                .eventId(eventId.intValue())
-                .zoneId(zoneId.intValue())
-                .categoryId(categoryId.intValue())
-                .presentationId(presentationId.intValue())
-                .numberTicket(numberTicket.intValue())
+        Optional<Ticket> Ticket = this.getById(TicketPk.builder()
+                .event(Event.builder()
+                        .id(eventId)
+                        .build())
+                .zone(Zone.builder()
+                        .id(zoneId)
+                        .build())
+                .category(Category.builder()
+                        .id(categoryId)
+                        .build())
+                .presentation(Presentation.builder()
+                        .id(presentationId)
+                        .build())
+                .numberTicket(numberTicket)
                 .build());
-        if (!ticketEntity.isPresent()) {
+        if (!Ticket.isPresent()) {
             throw new BusinessException(1L, TYPE_EXCEPTION.ERROR, "No se encontro tickete comprado");
         }
         Optional<Long> idConfigEvent = configEventService.recordSale(eventId, presentationId);
@@ -98,7 +110,7 @@ public class TicketServiceImpl implements TicketService {
         if (!valida) {
             throw new BusinessException(1L, TYPE_EXCEPTION.ERROR, "Imposible actualizar el consolidado por zona");
         }
-        return ticketEntity;
+        return Ticket;
     }
 
     @Override
@@ -120,7 +132,7 @@ public class TicketServiceImpl implements TicketService {
             temp = temp.stream().filter(ticket -> {
                 if ("event".equalsIgnoreCase(join.getEntity()) && ticket.getEventId().equals(join.getFieldType().parse(join.getValue())) ||
                         "presentation".equalsIgnoreCase(join.getEntity()) && ticket.getPresentationId().equals(join.getFieldType().parse(join.getValue()))
-                ) {
+                ){
                     return true;
                 }
                 return false;
@@ -152,7 +164,7 @@ public class TicketServiceImpl implements TicketService {
         try {
             rand = SecureRandom.getInstanceStrong();
         } catch (NoSuchAlgorithmException e) {
-            throw new BusinessException(1L, TYPE_EXCEPTION.ERROR, "Error al generar la instancia del random", e);
+            throw new BusinessException(1L, TYPE_EXCEPTION.ERROR, "Error al generar la instancia del random", e );
         }
         for (int i = 0; i < n; i++) {
 

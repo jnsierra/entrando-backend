@@ -1,69 +1,62 @@
 package co.com.entrando.datos.entity;
 
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.*;
-
-import java.util.LinkedHashSet;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
-
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter @Setter
+@NamedQuery(name = "Category.getByEventAndPresentation", query = """
+         SELECT cat
+          FROM Category cat
+         inner join cat.zones zon
+         inner join zon.zoneConfigEvents zonCon
+         inner join zonCon.configEvent confEvent
+         where confEvent.event.id = :eventId
+           and confEvent.presentation.id = :presentationId
+        """)
 @Entity
 @Table(name = "category")
-public class Category {
+public class Category implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_id_gen")
-    @SequenceGenerator(name = "category_id_gen", sequenceName = "category_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-
-    @Column(name = "name", nullable = false)
+    @GeneratedValue(generator = "sequence-generator-category")
+    @GenericGenerator(
+            name = "sequence-generator-category",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "category_seq"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "1"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            }
+    )
+    private Long id;
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
-
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, unique = true)
     private String description;
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    private Set<Zone> zones = new HashSet<>();
+    @OneToMany(mappedBy = "ticketPk.category", fetch = FetchType.LAZY)
+    private Set<Ticket> tickets = new HashSet<>();
 
-    @OneToMany(mappedBy = "category")
-    private Set<Ticket> tickets = new LinkedHashSet<>();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    @OneToMany(mappedBy = "category")
-    private Set<Zone> zones = new LinkedHashSet<>();
+        Category that = (Category) o;
 
-    public Integer getId() {
-        return id;
+        return id.equals(that.id);
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<Ticket> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(Set<Ticket> tickets) {
-        this.tickets = tickets;
-    }
-
-    public Set<Zone> getZones() {
-        return zones;
-    }
-
-    public void setZones(Set<Zone> zones) {
-        this.zones = zones;
-    }
-
 }

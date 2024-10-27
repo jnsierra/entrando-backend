@@ -1,57 +1,45 @@
 package co.com.entrando.datos.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import jakarta.persistence.*;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.Objects;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter @Setter
 @Entity
 @Table(name = "city")
-public class City {
+@NamedQuery(name="City.findByDepartment", query = "from City city inner join fetch city.department as dep where dep.code = ?1 ")
+public class City implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1234567L;
     @EmbeddedId
-    private CityId id;
-
-    @MapsId("departmentCode")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "department_code", nullable = false)
-    private Department departmentCode;
-
-    @Column(name = "name", nullable = false)
+    private CityPk cityPk;
+    @Column(name = "name")
     private String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_code", insertable = false, updatable = false)
+    private Department department;
 
-    @OneToMany(mappedBy = "city")
-    private Set<Event> events = new LinkedHashSet<>();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    public CityId getId() {
-        return id;
+        City that = (City) o;
+
+        return Objects.equals(cityPk, that.cityPk);
     }
 
-    public void setId(CityId id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return cityPk != null ? cityPk.hashCode() : 0;
     }
-
-    public Department getDepartmentCode() {
-        return departmentCode;
-    }
-
-    public void setDepartmentCode(Department departmentCode) {
-        this.departmentCode = departmentCode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
-
 }

@@ -1,7 +1,7 @@
 package co.com.entrando.datos.service.impl;
 
 import co.com.entrando.datos.entity.City;
-import co.com.entrando.datos.entity.CityId;
+import co.com.entrando.datos.entity.CityPk;
 import co.com.entrando.datos.repository.CityRepository;
 import co.com.entrando.datos.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class CityServiceImpl implements CityService {
     }
     @Override
     public Optional<City> getById(Long cityCode, Long departmentCode) {
-        return cityRepository.findById(new CityId(cityCode.intValue(),departmentCode.intValue()));
+        return cityRepository.findById(new CityPk(cityCode,departmentCode));
     }
     @Override
     public Set<City> getCitiesByDepartment(Long departmentCode) {

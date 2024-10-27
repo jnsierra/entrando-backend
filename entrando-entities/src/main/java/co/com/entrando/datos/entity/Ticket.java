@@ -1,105 +1,93 @@
 package co.com.entrando.datos.entity;
 
+import co.com.entrando.enumeration.StatusTicket;
+import lombok.Getter;
+import lombok.Setter;
+
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
+@Getter @Setter
+@NamedQuery(name = "Ticket.getByEventIdAndPresentationId", query = """
+            from Ticket ticket 
+inner join fetch ticket.ticketPk.event as eve 
+inner join fetch ticket.ticketPk.presentation as pr 
+inner join fetch ticket.ticketPk.zone as zone 
+inner join fetch ticket.ticketPk.category as cat 
+           where eve.id = :eventId 
+             and pr.id = :presentationId 
+        order by ticket.ticketPk.numberTicket 
+            """)
+@NamedQuery(name = "Ticket.countByEventIdAndPresentationId", query = "select count(*) from Ticket ticket inner join ticket.ticketPk.event as eve inner join ticket.ticketPk.presentation as pr where eve.id = :eventId and pr.id = :presentationId")
+@NamedQuery(name = "Ticket.updateState", query = """
+        Update Ticket tic
+           set state = :state ,
+           confirmationNumber = :confirmationNumber ,
+           userEmail = :user
+         where tic.ticketPk.event.id = :eventId
+           and tic.ticketPk.zone.id = :zoneId
+           and tic.ticketPk.category.id = :categoryId
+           and tic.ticketPk.presentation.id = :presentationId
+           and tic.ticketPk.numberTicket = :numberTicket
+        """)
+@NamedQuery(name = "Ticket.getByEventAndPresentationAndZoneAndCategory", query = """
+        SELECT ticket
+        FROM Ticket ticket
+        inner join fetch ticket.ticketPk.event as eve
+        inner join fetch ticket.ticketPk.presentation as pr
+        inner join fetch ticket.ticketPk.zone as zone 
+        inner join fetch ticket.ticketPk.category as cat 
+        WHERE eve.id = :eventId 
+          AND pr.id = :presentationId
+          AND zone.id = :zoneId
+          AND cat.id = :categoryId
+          AND ticket.state = 'CREATED'           
+       ORDER BY ticket.ticketPk.numberTicket 
+        """)
+@NamedQuery(name = "Ticket.getByEmailAndEventAndPresentation", query = """
+        SELECT ticket
+          FROM Ticket ticket
+         INNER JOIN ticket.ticketPk.presentation  pre
+         INNER JOIN ticket.ticketPk.event ev
+         WHERE ticket.userEmail = :email
+           AND ev.id = :eventId
+           AND pre.id = :presentationId
+           AND pre.id = :presentationId
+        """)
 @Table(name = "tickets")
-public class Ticket {
-    @SequenceGenerator(name = "tickets_id_gen", sequenceName = "presentation_seq", allocationSize = 1)
+public class Ticket implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     @EmbeddedId
-    private TicketId id;
-
-    @MapsId("eventId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "event_id", nullable = false)
-    private Event event;
-
-    @MapsId("zoneId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "zone_id", nullable = false)
-    private Zone zone;
-
-    @MapsId("categoryId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
-
-    @MapsId("presentationId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "presentation_id", nullable = false)
-    private Presentation presentation;
-
-    @Column(name = "status", nullable = false)
-    private String status;
-
+    private TicketPk ticketPk;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", length = 8)
+    private StatusTicket state;
     @Column(name = "user_email")
     private String userEmail;
+    @Column(name = "confirmation")
+    private String confirmationNumber;
 
-    @Column(name = "confirmation", length = 50)
-    private String confirmation;
-
-    public TicketId getId() {
-        return id;
+    public Ticket(TicketPk ticketPk, StatusTicket state) {
+        this.ticketPk = ticketPk;
+        this.state = state;
     }
 
-    public void setId(TicketId id) {
-        this.id = id;
+    public Ticket() {
     }
 
-    public Event getEvent() {
-        return event;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ticket that = (Ticket) o;
+
+        return ticketPk.equals(that.ticketPk);
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    @Override
+    public int hashCode() {
+        return ticketPk.hashCode();
     }
-
-    public Zone getZone() {
-        return zone;
-    }
-
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Presentation getPresentation() {
-        return presentation;
-    }
-
-    public void setPresentation(Presentation presentation) {
-        this.presentation = presentation;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getConfirmation() {
-        return confirmation;
-    }
-
-    public void setConfirmation(String confirmation) {
-        this.confirmation = confirmation;
-    }
-
 }

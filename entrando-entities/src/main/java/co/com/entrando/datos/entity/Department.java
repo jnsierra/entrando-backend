@@ -1,35 +1,42 @@
 package co.com.entrando.datos.entity;
 
 import jakarta.persistence.*;
-
-import java.util.LinkedHashSet;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "department")
-public class Department {
+@NamedQuery(name="Department.findByCountry", query = "FROM Department dep inner join dep.country as country WHERE country.code = :idCountry ")
+public class Department implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "department_id_gen")
-    @SequenceGenerator(name = "department_id_gen", sequenceName = "department_seq", allocationSize = 1)
-    @Column(name = "code", nullable = false)
-    private Integer id;
-
-    @Column(name = "name", nullable = false)
+    @Column(name = "code", nullable = false, updatable = false)
+    private Long code;
+    @Column(name = "name")
     private String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_code")
+    private Country country;
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+    private Set<City> cities = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "country_code", nullable = false)
-    private Country countryCode;
-
-    @OneToMany(mappedBy = "departmentCode")
-    private Set<City> cities = new LinkedHashSet<>();
-
-    public Integer getId() {
-        return id;
+    public Department() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Department(Long code, String name, Country country, Set<City> cities) {
+        this.code = code;
+        this.name = name;
+        this.country = country;
+        this.cities = cities;
+    }
+
+    public Long getCode() {
+        return code;
+    }
+
+    public void setCode(Long code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -40,12 +47,12 @@ public class Department {
         this.name = name;
     }
 
-    public Country getCountryCode() {
-        return countryCode;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryCode(Country countryCode) {
-        this.countryCode = countryCode;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public Set<City> getCities() {

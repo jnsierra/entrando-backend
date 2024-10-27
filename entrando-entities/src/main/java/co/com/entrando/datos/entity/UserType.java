@@ -1,106 +1,51 @@
 package co.com.entrando.datos.entity;
 
-import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
-import java.time.Instant;
-import java.util.LinkedHashSet;
+import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "user_type")
-public class UserType {
+@Getter @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserType implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_type_id_gen")
-    @SequenceGenerator(name = "user_type_id_gen", sequenceName = "user_type_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-
+    @GeneratedValue(generator = "sequence-generator-user-type")
+    @GenericGenerator(
+            name = "sequence-generator-user-type",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @Parameter(name = "sequence_name", value = "user_type_seq"),
+                    @Parameter(name = "initial_value", value = "1"),
+                    @Parameter(name = "increment_size", value = "1")
+            }
+    )
+    private Long id;
     @Column(name = "type", nullable = false)
     private String type;
-
     @Column(name = "description", nullable = false)
     private String description;
+    @ManyToMany(mappedBy = "userTypes", fetch = FetchType.LAZY)
+    private Set<User> users;
 
-    @Column(name = "created_by", nullable = false)
-    private String createdBy;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    @Column(name = "created_date", nullable = false)
-    private Instant createdDate;
+        UserType that = (UserType) o;
 
-    @Column(name = "last_modified_by", nullable = false)
-    private String lastModifiedBy;
-
-    @Column(name = "last_modified_date", nullable = false)
-    private Instant lastModifiedDate;
-
-    @ManyToMany
-    @JoinTable(name = "user_tickets_user_type",
-            joinColumns = @JoinColumn(name = "user_type_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_tickets_id"))
-    private Set<UserTicket> userTickets = new LinkedHashSet<>();
-
-    public Integer getId() {
-        return id;
+        return id.equals(that.id);
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Instant getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Instant createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    public Instant getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Instant lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public Set<UserTicket> getUserTickets() {
-        return userTickets;
-    }
-
-    public void setUserTickets(Set<UserTicket> userTickets) {
-        this.userTickets = userTickets;
-    }
-
 }

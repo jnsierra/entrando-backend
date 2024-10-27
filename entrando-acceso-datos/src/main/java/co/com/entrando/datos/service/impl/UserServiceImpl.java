@@ -1,13 +1,13 @@
 package co.com.entrando.datos.service.impl;
 
-/*
-import co.com.entrando.datos.entity.UserTicket;
+
+import co.com.entrando.datos.entity.User;
 import co.com.entrando.datos.entity.UserType;
-import co.com.entrando.exception.BusinessException;
-import co.com.entrando.exception.enumeration.TYPE_EXCEPTION;
 import co.com.entrando.datos.repository.UserRepository;
 import co.com.entrando.datos.service.UserService;
 import co.com.entrando.datos.service.UserTypeService;
+import co.com.entrando.exception.BusinessException;
+import co.com.entrando.exception.enumeration.TYPE_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
         this.userTypeService = userTypeService;
     }
     @Override
-    public UserTicket save(UserTicket userEntity) {
+    public User save(User userEntity) {
         return userRepository.save(userEntity);
     }
     @Override
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public boolean deleteUserType(String email) {
-        Optional<UserTicket> user = userRepository.findByEmail(email);
+        Optional<User> user = userRepository.findByEmail(email);
         if(user.isEmpty()){
             return false;
         }
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public boolean addUserType(String email, String userType) {
-        Optional<UserTicket> user = userRepository.findByEmail(email);
+        Optional<User> user = userRepository.findByEmail(email);
         if(user.isEmpty()){
             return false;
         }
@@ -63,4 +63,3 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 }
-*/
