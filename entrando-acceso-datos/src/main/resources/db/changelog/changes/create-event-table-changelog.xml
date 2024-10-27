@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="admin" id="1">
+        <createTable tableName="event">
+            <column name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="place" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="minimum_age" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="responsible" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nit" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_code" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="department_code" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="admin"/>
+        </rollback>
+    </changeSet>
+    <changeSet author="admin" id="2">
+        <createSequence sequenceName="event_seq" startValue="1" incrementBy="1" />
+    </changeSet>
+    <changeSet id="admin" author="3">
+        <addForeignKeyConstraint
+                baseTableName="event"
+                baseColumnNames="department_code, city_code"
+                constraintName="fk_event_city"
+                referencedTableName="city"
+                referencedColumnNames="department_code, code"/>
+        <addForeignKeyConstraint
+                baseTableName="event"
+                baseColumnNames="category_id"
+                constraintName="fk_event_category"
+                referencedTableName="event_category"
+                referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="admin" author="4">
+        <insert tableName="event">
+            <column name="id"  valueComputed="${sequence.event}"></column>
+            <column name="name" value="Gira Andres Cepeda Movistar Arena"/>
+            <column name="place" value="Movistar Arena"/>
+            <column name="date" value="${now}"/>
+            <column name="time" value="23:00" />
+            <column name="minimum_age" value="10" />
+            <column name="responsible" value="Jesus Sierra" />
+            <column name="nit" value="1234" />
+            <column name="address" value="Cra 30 # 53" />
+            <column name="city_code" value="001" />
+            <column name="department_code" value="11" />
+            <column name="status" value="CREATED" />
+            <column name="created_by" value="jnsierra" />
+            <column name="category_id" value="1" />
+
+            <column name="created_by" value="jnsierra" />
+            <column name="created_date" value="${now}" />
+            <column name="last_modified_by" value="jnsierra" />
+            <column name="last_modified_date" value="${now}" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="86f19289-358c-4448-a85f-101a0df02f52" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/config/CustomKeycloakLogoutHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/controller/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/mapper/TicketMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/ArtistService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/CategoryEventService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/CityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/ConfigEventService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/CountryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/DepartmentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/EventImagesService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/EventService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/MusicBandService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/PresentationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/TicketService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/UserTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/ZoneConfigEventService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/ZoneService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/ArtistServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/CategoryEventServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/CityServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/ConfigEventServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/CountryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/DepartmentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/EventImagesServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/EventServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/MusicBandServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/PresentationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/TicketServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/UserTypeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/ZoneConfigEventServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/service/impl/ZoneServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/db/db.changelog.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/Artist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/CityId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/ConfigEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/Department.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/EventCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/EventImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/MusicBand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/Presentation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/Ticket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/TicketId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/UserTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/UserType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/Zone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/entity/ZoneConfigEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/filtering/FieldType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/filtering/FilterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/filtering/JoinEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/filtering/Operator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/filtering/SearchRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/filtering/SearchSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/filtering/SortDirection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/filtering/SortRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/ArtistRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/CityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/ConfigEventRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/CountryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/DepartmentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/EventCategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/EventImagesRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/EventRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/MusicBandRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/PresentationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/TicketRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/UserTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/ZoneConfigEventRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/ZoneRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-security/src/main/java/co/com/entrando/security/service/UserLoggerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-security/src/main/java/co/com/entrando/security/service/impl/UserLoggerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/ArtistDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/CategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/CategoryEventDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/CityDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/ConfigEventDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/CountryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/DepartmentDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/EventDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/EventImagesDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/EventMoreInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/ExternalUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/MusicBandDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/PresentationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/TicketDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/TicketViewDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/TipoUsuarioDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/TokenDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/UsuarioDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/ZoneConfigEventDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/ZoneConfigEventViewDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/ZoneDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/ZoneViewDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/enumeration/EventStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/enumeration/LOGIN_ACTION.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/enumeration/StatusTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/enumeration/TYPE_FILES.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/enumeration/TypeImages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/enumeration/USER_STATE.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/exception/BusinessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/exception/enumeration/TYPE_EXCEPTION.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2o1mUyvGNqlrTUDbPewbQJhzTRx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.EntrandoAccesoDatosApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/nicolas/Documents/repo/entrando-backend/entrando-acceso-datos/src/main/java/co/com/entrando/datos/mapper",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/mapper" />
+      <recent name="$PROJECT_DIR$/entrando-security/src/main/java/co/com/entrando/security/service/impl" />
+      <recent name="$PROJECT_DIR$/entrando-security/src/main/java/co/com/entrando/security/service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="EntrandoAccesoDatosApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="entrando-acceso-datos" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="co.com.entrando.datos.EntrandoAccesoDatosApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="86f19289-358c-4448-a85f-101a0df02f52" name="Changes" comment="" />
+      <created>1730045475417</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730045475417</updated>
+      <workItem from="1730045476469" duration="1909000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

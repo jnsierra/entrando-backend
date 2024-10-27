@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/tickero
+    username: hashticket
+    password: S3cret
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: pool-tickets
+      maximum-pool-size: 10
+      connection-timeout: 60000
+  jpa:
+    show-sql: true
+    generate-ddl: false

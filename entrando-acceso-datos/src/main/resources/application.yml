@@ -1,0 +1,24 @@
+server:
+  servlet:
+    context-path: /api-acceso-datos
+  port: 5005
+spring:
+  application:
+    name: entrando-acceso-datos
+  liquibase:
+    change-log: classpath:db/db.changelog.xml
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: springboot-openid-client-app
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/Keycloak_springboot
+            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/Keycloak_springboot

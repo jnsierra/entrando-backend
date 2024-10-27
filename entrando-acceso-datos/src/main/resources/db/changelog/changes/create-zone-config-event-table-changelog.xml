@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="admin" id="1">
+        <createTable tableName="zone_config_event">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="zone_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="config_event_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="number_of_tickets" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="cost" type="decimal">
+                <constraints nullable="false" />
+            </column>
+            <column name="number_of_tickets_sold"
+                    type="INT"
+                    defaultValue="0" />
+            <column name="create_tickets"
+                    type="boolean"
+                    defaultValueBoolean="false"
+            />
+        </createTable>
+        <rollback>
+            <dropTable tableName="zone"/>
+        </rollback>
+    </changeSet>
+    <changeSet author="admin" id="2">
+        <createSequence sequenceName="zone_config_event_seq" startValue="1" incrementBy="1" />
+    </changeSet>
+    <changeSet id="admin" author="3">
+        <addForeignKeyConstraint baseTableName="zone_config_event" baseColumnNames="zone_id" constraintName="fk_zone_config_event_zone" referencedTableName="zone" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="zone_config_event" baseColumnNames="config_event_id" constraintName="fk_zone_config_event_config_event" referencedTableName="config_event" referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
