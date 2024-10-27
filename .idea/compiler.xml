@@ -10,6 +10,7 @@
         <module name="entrando-entities" />
         <module name="entrando-utiles" />
         <module name="entrando-security" />
+        <module name="entrando-config" />
       </profile>
       <profile name="Annotation profile for entrando-backend" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -28,6 +29,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="entrando-acceso-datos" options="-parameters" />
+      <module name="entrando-config" options="-parameters" />
       <module name="entrando-entities" options="-parameters" />
       <module name="entrando-security" options="-parameters" />
       <module name="entrando-utiles" options="-parameters" />

@@ -1,0 +1,13 @@
+server:
+  servlet:
+    context-path: /api-acceso-datos
+  port: 5005
+spring:
+  application:
+    name: entrando-acceso-datos
+  config:
+    import: "optional:configserver:${CONFIG_SERVER:http://localhost:8888}"   # Config server
+  cloud:
+    config:
+      name: security,datos
+      fail-fast: true
