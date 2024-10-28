@@ -3,7 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/entrando-acceso-datos/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/entrando-config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/entrando-discovery/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/entrando-entities/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/entrando-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/entrando-security/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/entrando-utiles/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />

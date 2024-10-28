@@ -34,5 +34,7 @@
         <module>entrando-utiles</module>
         <module>entrando-security</module>
         <module>entrando-config</module>
+        <module>entrando-discovery</module>
+        <module>entrando-gateway</module>
     </modules>
 </project>

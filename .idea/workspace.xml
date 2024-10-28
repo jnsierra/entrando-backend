@@ -4,21 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3188e886-e08c-4ca0-acbc-ca4713402ad3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/security/security-dev.yml" afterDir="false" />
+    <list default="true" id="81d8fdab-af26-4cd1-9eaa-65a3a4794271" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/discovery/discovery-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-gateway/src/main/resources/bootstrap.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c9dc3bae-1aa2-4a91-935d-f56860752a79.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c9dc3bae-1aa2-4a91-935d-f56860752a79/storage_v2/_src_/database/tickero.pfYksQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c9dc3bae-1aa2-4a91-935d-f56860752a79/storage_v2/_src_/database/tickero.pfYksQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6eeb27e-98e2-42f4-b454-18d680a45f09.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6eeb27e-98e2-42f4-b454-18d680a45f09/storage_v2/_src_/database/tickero.pfYksQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6eeb27e-98e2-42f4-b454-18d680a45f09/storage_v2/_src_/database/tickero.pfYksQ/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/datos/datos-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-entities/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-utiles/src/main/resources/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +38,7 @@
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 7
 }]]></component>
-  <component name="ProjectId" id="2o2EeYG3exwsOdGwJgj70h5Rhzs" />
+  <component name="ProjectId" id="2o35GQ7tNSUg2mdm3J0i0qgnvOF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -49,8 +51,10 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.EntrandoAccesoDatosApplication.executor": "Run",
-    "Spring Boot.EntrandoConfigApplication.executor": "Run",
+    "Spring Boot.EntrandoAccesoDatosApplication.executor": "Debug",
+    "Spring Boot.EntrandoConfigApplication.executor": "Debug",
+    "Spring Boot.EntrandoDiscoveryApplication.executor": "Debug",
+    "Spring Boot.EntrandoGatewayApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -58,9 +62,13 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "run.configurations.included.in.services": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean install" />
@@ -69,6 +77,9 @@
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
@@ -89,10 +100,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.EntrandoAccesoDatosApplication" />
-      <item itemvalue="Spring Boot.EntrandoConfigApplication" />
-    </list>
+    <configuration name="EntrandoDiscoveryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="entrando-discovery" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="co.com.entrando.discovery.EntrandoDiscoveryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EntrandoGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="entrando-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="co.com.entrando.gateway.EntrandoGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -105,12 +127,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3188e886-e08c-4ca0-acbc-ca4713402ad3" name="Changes" comment="" />
-      <created>1730059365379</created>
+      <changelist id="81d8fdab-af26-4cd1-9eaa-65a3a4794271" name="Changes" comment="" />
+      <created>1730085322967</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730059365379</updated>
-      <workItem from="1730059366431" duration="3032000" />
+      <updated>1730085322967</updated>
+      <workItem from="1730085324072" duration="2677000" />
     </task>
     <servers />
   </component>

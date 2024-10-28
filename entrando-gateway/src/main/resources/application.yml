@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      loadbalancer:
+        ribbon:
+          enabled: false
+      routes:
+        - id: acceso-datos
+          uri: lb://entrando-acceso-datos
+          predicates:
+            - Path=/entrando-acceso-datos/**
+          filters:
+            - StripPrefix=1
+            #- RewritePath=/api-acceso-datos/(?<segment>.*), /${segment}
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+    reactor.netty: DEBUG

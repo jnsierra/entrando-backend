@@ -1,13 +1,13 @@
 server:
   servlet:
-    context-path: /api-acceso-datos
-  port: 5005
+    context-path: /api
+  port: 5004
 spring:
   application:
-    name: entrando-acceso-datos
+    name: entrando-gateway
   config:
     import: "optional:configserver:${CONFIG_SERVER:http://localhost:8888}"   # Config server
   cloud:
     config:
-      name: security,datos,discovery
+      name: discovery
       fail-fast: true
