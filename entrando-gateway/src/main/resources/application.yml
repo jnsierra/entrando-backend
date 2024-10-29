@@ -14,7 +14,12 @@ spring:
             - Path=/entrando-acceso-datos/**
           filters:
             - StripPrefix=1
-            #- RewritePath=/api-acceso-datos/(?<segment>.*), /${segment}
+        - id: business
+          uri: lb://entrando-business
+          predicates:
+          - Path=/entrando-business/**
+          filters:
+          - StripPrefix=1
 logging:
   level:
     org.springframework.cloud.gateway: TRACE

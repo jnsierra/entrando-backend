@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: entrando-business
+  config:
+    import: "optional:configserver:${CONFIG_SERVER:http://localhost:8888}"   # Config server
+  cloud:
+    config:
+      name: security,discovery,business
+      fail-fast: true
+server:
+  servlet:
+    context-path: /api-business
+  port: 5003

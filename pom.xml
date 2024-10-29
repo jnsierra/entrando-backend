@@ -36,5 +36,6 @@
         <module>entrando-config</module>
         <module>entrando-discovery</module>
         <module>entrando-gateway</module>
+        <module>entrando-business</module>
     </modules>
 </project>

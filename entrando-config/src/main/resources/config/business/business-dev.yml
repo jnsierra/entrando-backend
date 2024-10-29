@@ -1,0 +1,20 @@
+endpoint:
+  ms-data-access:
+    protocol: http
+    host: localhost
+    port: 5005
+qr:
+  path: /Users/nicolas/Documents/repo_qr/
+mail:
+  configuration:
+    user: admin@compraboletas.shop
+    password: Nicole1310*
+business:
+  pathRepo: /Users/nicolas/Documents/repo_images/
+logging:
+  level:
+    co:
+      com:
+        entrando:
+          business:
+            client: debug
