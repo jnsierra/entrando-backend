@@ -9,8 +9,14 @@ spring:
             scope: openid
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/Keycloak_springboot
+            issuer-uri: ${KEYCLOAK_ISSUER_URI:http://keycloak:8080/realms/Keycloak_springboot}
             user-name-attribute: preferred_username
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/Keycloak_springboot
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://keycloak:8080/realms/Keycloak_springboot}
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.boot.autoconfigure.security: TRACE

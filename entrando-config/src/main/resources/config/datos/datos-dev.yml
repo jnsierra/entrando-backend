@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/tickero
+    url: jdbc:postgresql://${DB_SERVER:localhost}:${DB_PORT:5433}/tickero
     username: hashticket
     password: S3cret
     type: com.zaxxer.hikari.HikariDataSource

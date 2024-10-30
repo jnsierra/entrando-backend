@@ -9,12 +9,13 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>entrando-acceso-datos</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>entrando-acceso-datos</name>
     <packaging>jar</packaging>
     <description>Proyecto Ticketera para acceder a la base de datos</description>
     <properties>
-        <java.version>17</java.version>
+        <spring-boot.build-image.builder>paketobuildpacks/builder:base</spring-boot.build-image.builder>
+        <spring-boot.build-image.imageName>entrando/datos:${project.version}</spring-boot.build-image.imageName>
     </properties>
     <dependencies>
         <dependency>
@@ -70,10 +71,7 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -99,6 +97,20 @@
                             <version>1.5.3.Final</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <builder>${spring-boot.build-image.builder}</builder>
+                        <name>${spring-boot.build-image.imageName}</name>
+                        <env>
+                            <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
+                            <BP_JAVA_APP_SERVER>tomcat</BP_JAVA_APP_SERVER>
+                        </env>
+                    </image>
                 </configuration>
             </plugin>
         </plugins>

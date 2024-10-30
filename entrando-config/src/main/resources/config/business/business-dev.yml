@@ -1,8 +1,8 @@
 endpoint:
   ms-data-access:
-    protocol: http
-    host: localhost
-    port: 5005
+    protocol: ${PROTOCOL_DATA:http}
+    host: ${HOST_DATA:localhost}
+    port: ${PORT_DATA:5005}
 qr:
   path: /Users/nicolas/Documents/repo_qr/
 mail:

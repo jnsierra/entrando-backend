@@ -5,31 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ad59492-28cb-4545-9fcb-f6c18e5f7613" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/config/FeignConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/config/FeignConfigInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/config/MailConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/config/QrConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/controller/EventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/controller/EventImagesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/controller/TicketController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/business/business-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/client/FieldType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/client/FilterRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/client/JoinEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/client/Operator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/client/SearchRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/client/SortDirection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/client/SortRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/utilities/Base64Utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-business/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-business/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-business/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-business/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/business/business-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/business/business-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/datos/datos-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/datos/datos-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/discovery/discovery-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/discovery/discovery-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/security/security-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/security/security-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-discovery/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-discovery/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-gateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-utiles/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-utiles/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-security/src/main/resources/application.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,43 +30,43 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2o4NfcCKensa54ONUpPD9WUXdkf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.entrando-backend [clean,install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.EntrandoAccesoDatosApplication.executor": "Run",
-    "Spring Boot.EntrandoBusinessApplication.executor": "Run",
-    "Spring Boot.EntrandoConfigApplication.executor": "Run",
-    "Spring Boot.EntrandoDiscoveryApplication.executor": "Run",
-    "Spring Boot.EntrandoGatewayApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/nicolas/Documents/repo/entrando-backend/entrando-business/src/main/java/co/com/entrando/business/config",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.entrando-backend [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EntrandoAccesoDatosApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EntrandoBusinessApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EntrandoConfigApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EntrandoDiscoveryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EntrandoGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nicolas/Documents/repo/entrando-backend/entrando-business/src/main/java/co/com/entrando/business/config&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -157,12 +148,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730124992063</updated>
-      <workItem from="1730124993196" duration="13903000" />
+      <workItem from="1730124993196" duration="14112000" />
+      <workItem from="1730173876602" duration="7118000" />
+      <workItem from="1730182501025" duration="293000" />
+      <workItem from="1730209839734" duration="11033000" />
+      <workItem from="1730245027163" duration="5755000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

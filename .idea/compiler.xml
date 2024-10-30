@@ -8,10 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="entrando-utiles" />
-        <module name="entrando-config" />
         <module name="entrando-entities" />
         <module name="entrando-gateway" />
         <module name="entrando-security" />
+        <module name="entrando-config" />
         <module name="entrando-discovery" />
       </profile>
       <profile name="Annotation profile for entrando-backend" enabled="true">

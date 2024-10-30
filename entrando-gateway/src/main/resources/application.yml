@@ -11,15 +11,15 @@ spring:
         - id: acceso-datos
           uri: lb://entrando-acceso-datos
           predicates:
-            - Path=/entrando-acceso-datos/**
+          - Path=/entrando-acceso-datos/**
           filters:
-            - StripPrefix=1
+          - PreserveHostHeader
         - id: business
           uri: lb://entrando-business
           predicates:
-          - Path=/entrando-business/**
+          - Path=/api-business/**
           filters:
-          - StripPrefix=1
+          - PreserveHostHeader
 logging:
   level:
     org.springframework.cloud.gateway: TRACE
