@@ -11,3 +11,9 @@ mvn spring-boot:build-image -pl entrando-acceso-datos,entrando-discovery,entrand
 ```
 
 mvn spring-boot:build-image -pl entrando-config
+
+
+
+docker compose up postgres postgreskc keycloak entrando-discovery entrando-config entrando-gateway jaeger entrando-datos entrando-business 
+
+docker compose up postgres postgreskc keycloak entrando-discovery entrando-config entrando-gateway jaeger -d

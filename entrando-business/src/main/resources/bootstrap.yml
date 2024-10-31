@@ -5,7 +5,7 @@ spring:
     import: "optional:configserver:${CONFIG_SERVER:http://localhost:8888}"   # Config server
   cloud:
     config:
-      name: security,discovery,business
+      name: security,discovery,business,tracing
       fail-fast: true
 server:
   servlet:

@@ -10,4 +10,4 @@ spring:
     config:
       server:
         native:
-          search-locations: classpath:/config/security,classpath:/config/datos,classpath:/config/discovery,classpath:/config/business
+          search-locations: classpath:/config/security,classpath:/config/datos,classpath:/config/discovery,classpath:/config/business,classpath:/config/tracing

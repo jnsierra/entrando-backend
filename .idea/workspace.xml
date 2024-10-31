@@ -5,27 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ad59492-28cb-4545-9fcb-f6c18e5f7613" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/config/TracingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/config/TracingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/tracing/tracing-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-gateway/src/main/java/co/com/entrando/gateway/config/TracingConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/bootstrap.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-business/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-business/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-business/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-business/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-business/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-business/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/business/business-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/business/business-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/datos/datos-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/datos/datos-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/discovery/discovery-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/discovery/discovery-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/security/security-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/security/security-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-discovery/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-discovery/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-docker/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-security/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-gateway/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,31 +50,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.entrando-backend [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.EntrandoAccesoDatosApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EntrandoBusinessApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EntrandoConfigApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EntrandoDiscoveryApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EntrandoGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/nicolas/Documents/repo/entrando-backend/entrando-business/src/main/java/co/com/entrando/business/config&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.entrando-backend [clean,install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.EntrandoAccesoDatosApplication.executor": "Run",
+    "Spring Boot.EntrandoBusinessApplication.executor": "Run",
+    "Spring Boot.EntrandoConfigApplication.executor": "Run",
+    "Spring Boot.EntrandoDiscoveryApplication.executor": "Run",
+    "Spring Boot.EntrandoGatewayApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/nicolas/Documents/repo/entrando-backend/entrando-business/src/main/java/co/com/entrando/business/config",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.configurations.included.in.services": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -79,6 +87,10 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/entrando-business/src/main/java/co/com/entrando/business/controller" />
       <recent name="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/dto/client" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="co.com.entrando.gateway.config" />
+      <recent name="co.com.entrando.business.config" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -96,6 +108,13 @@
   <component name="RunManager" selected="Spring Boot.EntrandoAccesoDatosApplication">
     <configuration name="EntrandoAccesoDatosApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ACTIVE_PROFILES" value="dev" />
+      <envs>
+        <env name="CONFIG_SERVER" value="http://localhost:8888" />
+        <env name="DB_PORT" value="5433" />
+        <env name="DB_SERVER" value="localhost" />
+        <env name="DISCOVERY_SERVER" value="http://localhost:8761/eureka/" />
+        <env name="KEYCLOAK_ISSUER_URI" value="http://keycloak:8080/realms/Keycloak_springboot" />
+      </envs>
       <module name="entrando-acceso-datos" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="co.com.entrando.datos.EntrandoAccesoDatosApplication" />
       <method v="2">
@@ -104,6 +123,14 @@
     </configuration>
     <configuration name="EntrandoBusinessApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ACTIVE_PROFILES" value="dev" />
+      <envs>
+        <env name="CONFIG_SERVER" value="http://localhost:8888" />
+        <env name="HOST_DATA" value="localhost" />
+        <env name="PROTOCOL_DATA" value="http" />
+        <env name="DISCOVERY_SERVER" value="http://localhost:8761/eureka/" />
+        <env name="KEYCLOAK_ISSUER_URI" value="http://keycloak:8080/realms/Keycloak_springboot" />
+        <env name="PORT_DATA" value="5005" />
+      </envs>
       <module name="entrando-business" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="co.com.entrando.business.EntrandoBusinessApplication" />
       <method v="2">
@@ -152,7 +179,7 @@
       <workItem from="1730173876602" duration="7118000" />
       <workItem from="1730182501025" duration="293000" />
       <workItem from="1730209839734" duration="11033000" />
-      <workItem from="1730245027163" duration="5755000" />
+      <workItem from="1730245027163" duration="14788000" />
     </task>
     <servers />
   </component>

@@ -122,6 +122,18 @@ services:
         condition: service_healthy
     networks:
       - entrando-network
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "16686:16686"
+      - "4317:4317"
+      - "4318:4318"
+    restart: always
+    networks:
+      - entrando-network
 #########################
 # MICROSERVICES
 #########################
@@ -144,6 +156,7 @@ services:
       - DB_PORT=5432
       - KEYCLOAK_ISSUER_URI=http://keycloak:8080/realms/Keycloak_springboot
       - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
+      - TRACING_URL=http://jaeger:4318/v1/traces
     depends_on:
       postgres:
         condition: service_healthy
@@ -175,6 +188,7 @@ services:
       - PROTOCOL_DATA=http
       - HOST_DATA=entrando-datos
       - PORT_DATA=5005
+      - TRACING_URL=http://jaeger:4318/v1/traces
     depends_on:
       entrando-config:
         condition: service_healthy
