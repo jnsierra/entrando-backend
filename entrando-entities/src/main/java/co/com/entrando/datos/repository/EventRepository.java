@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import co.com.entrando.enumeration.EventStatus;
 
 import java.util.Optional;
 import java.util.Set;
@@ -13,7 +14,7 @@ import java.util.Set;
 public interface EventRepository extends JpaRepository<Event, Long>, CrudRepository<Event, Long> {
     Set<Event> findByEventStatus(String eventStatus);
     Optional<Event> findByIdAndPresentation(Long eventId, Long presentationId);
-    Set<Event> findByEventStatusAndAfterTodayEvent(String eventStatus);
+    Set<Event> findByEventStatusAndAfterTodayEvent(EventStatus eventStatus);
     @Modifying
     Integer updateEventStatus(Long id, String eventStatus);
 }

@@ -1,0 +1,13 @@
+server:
+  servlet:
+    context-path: /api-public-users
+  port: 5006
+spring:
+  application:
+    name: entrando-public-users
+  config:
+    import: "optional:configserver:${CONFIG_SERVER:http://localhost:8888}"   # Config server
+  cloud:
+    config:
+      name: datos,discovery,tracing, mail
+      fail-fast: true

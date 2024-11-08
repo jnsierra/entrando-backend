@@ -37,5 +37,6 @@
         <module>entrando-discovery</module>
         <module>entrando-gateway</module>
         <module>entrando-business</module>
+        <module>entrando-public-users</module>
     </modules>
 </project>
