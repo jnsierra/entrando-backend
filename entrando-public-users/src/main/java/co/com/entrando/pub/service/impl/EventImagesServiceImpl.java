@@ -27,7 +27,7 @@ public class EventImagesServiceImpl implements EventImagesService {
     }
     @Override
     public Set<EventImagesDto> findByEventAndTypeImages(Long idEvent, TypeImages typeImages) {
-        return eventImagesRepository.findByEventAndTypeImages(idEvent, typeImages.toString())
+        return eventImagesRepository.findByEventAndTypeImages(idEvent, typeImages)
                 .stream()
                 .map(this::translate)
                 .collect(Collectors.toSet());

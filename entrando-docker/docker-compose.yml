@@ -74,7 +74,6 @@ services:
     container_name: entrando-discovery
     ports:
       - "8761:8761"
-      - "8790:8790"
     healthcheck:
       test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8761' || exit 1
       interval: 2s
@@ -88,7 +87,6 @@ services:
     container_name: entrando-config
     ports:
       - "8888:8888"
-      - "8791:8791"
     healthcheck:
       test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8888' || exit 1
       interval: 2s
@@ -98,11 +96,10 @@ services:
     networks:
       - entrando-network
   entrando-gateway:
-    image: entrando/gateway:0.0.1-SNAPSHOT
+    image: entrando/gateway:0.0.2
     container_name: entrando-gateway
     ports:
       - "5004:5004"
-      - "8794:8794"
     healthcheck:
       test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5004' || exit 1
       interval: 2s
@@ -142,7 +139,6 @@ services:
     container_name: entrando-datos
     ports:
       - "5005:5005"
-      - "8792:8792"
     healthcheck:
       test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5005' || exit 1
       interval: 2s
@@ -173,7 +169,6 @@ services:
     container_name: entrando-business
     ports:
       - "5003:5003"
-      - "8793:8793"
     healthcheck:
       test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5003' || exit 1
       interval: 2s
@@ -189,6 +184,7 @@ services:
       - HOST_DATA=entrando-datos
       - PORT_DATA=5005
       - TRACING_URL=http://jaeger:4318/v1/traces
+      - BUSINESS_PATH_IMAGES=${VOL_CONT_BUSINESS_IMAGE}
     depends_on:
       entrando-config:
         condition: service_healthy
@@ -200,3 +196,34 @@ services:
         condition: service_healthy
     networks:
       - entrando-network
+    volumes:
+      - ${VOL_BUSINESS_IMAGE}:${VOL_CONT_BUSINESS_IMAGE}
+  entrando-public:
+    image: entrando/public:0.0.1-SNAPSHOT
+    container_name: entrando-public
+    ports:
+      - "5006:5006"
+    healthcheck:
+      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5006' || exit 1
+      interval: 2s
+      timeout: 2s
+      retries: 100
+      start_period: 10s
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - CONFIG_SERVER=http://entrando-config:8888
+      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
+      - TRACING_URL=http://jaeger:4318/v1/traces
+      - DB_SERVER=postgres
+      - DB_PORT=5432
+    depends_on:
+      postgres:
+        condition: service_healthy
+      entrando-config:
+        condition: service_healthy
+      entrando-discovery:
+        condition: service_healthy
+    networks:
+      - entrando-network
+    volumes:
+      - ${VOL_BUSINESS_IMAGE}:${VOL_CONT_BUSINESS_IMAGE}

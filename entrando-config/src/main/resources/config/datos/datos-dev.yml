@@ -12,3 +12,12 @@ spring:
   jpa:
     show-sql: true
     generate-ddl: false
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+      hibernate:
+        type:
+          descriptor:
+            sql: trace

@@ -15,7 +15,7 @@
 	<description>entrando-public-users</description>
 	<properties>
 		<spring-boot.build-image.builder>paketobuildpacks/builder:base</spring-boot.build-image.builder>
-		<spring-boot.build-image.imageName>entrando/datos:${project.version}</spring-boot.build-image.imageName>
+		<spring-boot.build-image.imageName>entrando/public:${project.version}</spring-boot.build-image.imageName>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,10 +36,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-		<!--dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>

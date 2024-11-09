@@ -19,7 +19,7 @@ public class EventImagesController {
         this.eventImagesService = eventImagesService;
     }
     @GetMapping(value = "/event/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Set<EventImagesDto>> getEventImagesByEventAndType(@PathVariable(value = "id") Long id, @RequestParam TypeImages typeImages){
+    public ResponseEntity<Set<EventImagesDto>> getEventImagesByEventAndType(@PathVariable(value = "id") Long id, @RequestParam("typeImages") TypeImages typeImages){
         Set<EventImagesDto> images = eventImagesService.findByEventAndTypeImages(id, typeImages);
         if(images.isEmpty()){
             return ResponseEntity.noContent().build();

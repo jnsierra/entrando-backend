@@ -1,7 +1,3 @@
-server:
-  servlet:
-    context-path: /api-acceso-datos
-  port: 5005
 spring:
   application:
     name: entrando-acceso-datos
@@ -11,3 +7,7 @@ spring:
     config:
       name: security,datos,discovery,tracing
       fail-fast: true
+server:
+  servlet:
+    context-path: /api-acceso-datos
+  port: 5005

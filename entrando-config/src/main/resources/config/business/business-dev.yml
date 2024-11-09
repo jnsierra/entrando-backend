@@ -10,7 +10,7 @@ mail:
     user: admin@compraboletas.shop
     password: Nicole1310*
 business:
-  pathRepo: /Users/nicolas/Documents/repo_images/
+  pathRepo: ${BUSINESS_PATH_IMAGES:/Users/nicolas/Documents/repo_images/}
 logging:
   level:
     co:

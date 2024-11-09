@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>co.com.entrando.gateway</groupId>
 	<artifactId>entrando-gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>entrando-gateway</name>
 	<description>entrando-gateway</description>
 	<properties>
