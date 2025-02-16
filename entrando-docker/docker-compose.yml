@@ -1,8 +1,6 @@
 networks:
   keycloak-network:
     driver: bridge
-  entrando-network:
-    driver: bridge
 #########################
 # INFRASTRUCTURE
 #########################
@@ -10,70 +8,107 @@ services:
   postgres:
     image: postgres:16-alpine
     ports:
-      - 5433:5432
+      - 5435:5432
     volumes:
       - ${VOL_PG}:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: S3cret
       POSTGRES_USER: hashticket
       POSTGRES_DB: tickero
-      PGDATA: /var/lib/postgresql/data
+      PGDATA: /var/lib/postgresql/data/pgdata
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U hashticket -d tickero" ]
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
     networks:
       - entrando-network
   postgreskc:
     image: postgres:16-alpine
     ports:
-      - 5434:5432
+      - 5436:5432
     volumes:
       - ${VOL_PG_KC}:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      PGDATA: /var/lib/postgresql/data
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U keycloak_db_user -d keycloak_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
     networks:
       - keycloak-network
   keycloak:
-    image: quay.io/keycloak/keycloak:26.0.2
+    image: keycloak-custom
     command: start
-    restart: always
+      --optimized
+      --hostname=auth.iaticket.net
+    restart: unless-stopped
     ports:
       - "8080:8080"
+      - "8443:8443"
     environment:
-      KC_HOSTNAME: keycloak
-      KC_HOSTNAME_PORT: 8080
-      KC_HOSTNAME_STRICT_BACKCHANNEL: false
-      KC_HTTP_ENABLED: true
-      KC_HOSTNAME_STRICT_HTTPS: false
-      KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-      KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://postgreskc:5432/${POSTGRES_DB}
       KC_DB_USERNAME: ${POSTGRES_USER}
       KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_DB_URL: jdbc:postgresql://postgreskc:5432/${POSTGRES_DB}
+      KC_DB_POOL_MIN_SIZE: 5
+      KC_DB_POOL_MAX_SIZE: 15
+      KC_HOSTNAME_URL: https://auth.iaticket.net:8443/
+      KC_HTTPS_CERTIFICATE_FILE: /opt/keycloak/conf/server.crt
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /opt/keycloak/conf/server.key
+      JAVA_OPTS: >-
+        -XX:+UseG1GC
+        -XX:MaxGCPauseMillis=500
+        -XX:+UseStringDeduplication
+        -Xms512m
+        -Xmx1024m
     healthcheck:
-      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8080' || exit 1
+      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8443' || exit 1
       interval: 5s
       timeout: 2s
       retries: 200
       start_period: 20s
     networks:
-      - entrando-network
       - keycloak-network
+    depends_on:
+      postgreskc:
+        condition: service_healthy
+    volumes:
+      - ./etc/certs/server.crt:/opt/keycloak/conf/server.crt
+      - ./etc/certs/server.key:/opt/keycloak/conf/server.key
+    deploy:
+      resources:
+        limits:
+          memory: 1536M
+        reservations:
+          memory: 512M
 #########################
 # SERVICE CLOUD
 #########################
   entrando-discovery:
-    image: entrando/discovery:0.0.1-SNAPSHOT
+    image: 46.202.92.9:5000/entrando-discovery:0.0.1-SNAPSHOT
     container_name: entrando-discovery
     ports:
-      - "8761:8761"
+      - "8762:8761"
     healthcheck:
       test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8761' || exit 1
       interval: 2s
@@ -82,148 +117,3 @@ services:
       start_period: 10s
     networks:
       - entrando-network
-  entrando-config:
-    image: entrando/config:0.0.4-SNAPSHOT
-    container_name: entrando-config
-    ports:
-      - "8888:8888"
-    healthcheck:
-      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8888' || exit 1
-      interval: 2s
-      timeout: 2s
-      retries: 100
-      start_period: 10s
-    networks:
-      - entrando-network
-  entrando-gateway:
-    image: entrando/gateway:0.0.2
-    container_name: entrando-gateway
-    ports:
-      - "5004:5004"
-    healthcheck:
-      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5004' || exit 1
-      interval: 2s
-      timeout: 2s
-      retries: 100
-      start_period: 10s
-    environment:
-      - CONFIG_SERVER=http://entrando-config:8888
-      - SPRING_PROFILES_ACTIVE=dev
-      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
-    depends_on:
-      entrando-discovery:
-        condition: service_healthy
-      entrando-datos:
-        condition: service_healthy
-      entrando-business:
-        condition: service_healthy
-    networks:
-      - entrando-network
-  jaeger:
-    image: jaegertracing/all-in-one:latest
-    container_name: jaeger
-    environment:
-      - COLLECTOR_OTLP_ENABLED=true
-    ports:
-      - "16686:16686"
-      - "4317:4317"
-      - "4318:4318"
-    restart: always
-    networks:
-      - entrando-network
-#########################
-# MICROSERVICES
-#########################
-  entrando-datos:
-    image: entrando/datos:0.0.2-SNAPSHOT
-    container_name: entrando-datos
-    ports:
-      - "5005:5005"
-    healthcheck:
-      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5005' || exit 1
-      interval: 2s
-      timeout: 2s
-      retries: 100
-      start_period: 10s
-    environment:
-      - SPRING_PROFILES_ACTIVE=dev
-      - CONFIG_SERVER=http://entrando-config:8888
-      - DB_SERVER=postgres
-      - DB_PORT=5432
-      - KEYCLOAK_ISSUER_URI=http://keycloak:8080/realms/Keycloak_springboot
-      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
-      - TRACING_URL=http://jaeger:4318/v1/traces
-    depends_on:
-      postgres:
-        condition: service_healthy
-      entrando-config:
-        condition: service_healthy
-      keycloak:
-        condition: service_healthy
-      entrando-discovery:
-        condition: service_healthy
-    networks:
-      - entrando-network
-  entrando-business:
-    image: entrando/business:0.0.1-SNAPSHOT
-    container_name: entrando-business
-    ports:
-      - "5003:5003"
-    healthcheck:
-      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5003' || exit 1
-      interval: 2s
-      timeout: 2s
-      retries: 100
-      start_period: 10s
-    environment:
-      - SPRING_PROFILES_ACTIVE=dev
-      - CONFIG_SERVER=http://entrando-config:8888
-      - KEYCLOAK_ISSUER_URI=http://keycloak:8080/realms/Keycloak_springboot
-      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
-      - PROTOCOL_DATA=http
-      - HOST_DATA=entrando-datos
-      - PORT_DATA=5005
-      - TRACING_URL=http://jaeger:4318/v1/traces
-      - BUSINESS_PATH_IMAGES=${VOL_CONT_BUSINESS_IMAGE}
-    depends_on:
-      entrando-config:
-        condition: service_healthy
-      keycloak:
-        condition: service_healthy
-      entrando-discovery:
-        condition: service_healthy
-      entrando-datos:
-        condition: service_healthy
-    networks:
-      - entrando-network
-    volumes:
-      - ${VOL_BUSINESS_IMAGE}:${VOL_CONT_BUSINESS_IMAGE}
-  entrando-public:
-    image: entrando/public:0.0.1-SNAPSHOT
-    container_name: entrando-public
-    ports:
-      - "5006:5006"
-    healthcheck:
-      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5006' || exit 1
-      interval: 2s
-      timeout: 2s
-      retries: 100
-      start_period: 10s
-    environment:
-      - SPRING_PROFILES_ACTIVE=dev
-      - CONFIG_SERVER=http://entrando-config:8888
-      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
-      - TRACING_URL=http://jaeger:4318/v1/traces
-      - DB_SERVER=postgres
-      - DB_PORT=5432
-    depends_on:
-      postgres:
-        condition: service_healthy
-      entrando-config:
-        condition: service_healthy
-      entrando-discovery:
-        condition: service_healthy
-    networks:
-      - entrando-network
-    volumes:
-      - ${VOL_BUSINESS_IMAGE}:${VOL_CONT_BUSINESS_IMAGE}

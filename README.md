@@ -14,11 +14,20 @@ mvn spring-boot:build-image -pl entrando-config
 
 mvn spring-boot:build-image -pl entrando-gateway
 
+mvn spring-boot:build-image -pl entrando-discovery
+
+mvn spring-boot:build-image -pl entrando-config
+
+mvn spring-boot:build-image -pl entrando-config
+
+mvn spring-boot:build-image -pl entrando-acceso-datos
+
 
 
 docker compose up postgres postgreskc keycloak entrando-discovery entrando-config entrando-gateway jaeger entrando-datos entrando-business 
 
 docker compose up postgres postgreskc keycloak entrando-discovery entrando-config entrando-gateway jaeger -d
 
-mvn versions:set -DnewVersion=0.0.2 -DprocessParent=false -DgenerateBackupPoms=false -DprocessProject=true -DprocessFromLocalAggregationRoot=true -pl entrando-gateway
-mvn versions:commit
+
+## SSH para poder entrar al keycloak
+ssh -L 8081:localhost:8081 jnsierrac@46.202.92.9

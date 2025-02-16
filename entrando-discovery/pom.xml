@@ -10,7 +10,7 @@
 	</parent>
 	<properties>
 		<spring-boot.build-image.builder>paketobuildpacks/builder:base</spring-boot.build-image.builder>
-		<spring-boot.build-image.imageName>entrando/discovery:${project.version}</spring-boot.build-image.imageName>
+		<spring-boot.build-image.imageName>46.202.92.9:5000/entrando-discovery:${project.version}</spring-boot.build-image.imageName>
 	</properties>
 	<groupId>co.com.entrando.discovery</groupId>
 	<artifactId>entrando-discovery</artifactId>

@@ -9,13 +9,13 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>entrando-acceso-datos</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>entrando-acceso-datos</name>
     <packaging>jar</packaging>
     <description>Proyecto Ticketera para acceder a la base de datos</description>
     <properties>
         <spring-boot.build-image.builder>paketobuildpacks/builder:base</spring-boot.build-image.builder>
-        <spring-boot.build-image.imageName>entrando/datos:${project.version}</spring-boot.build-image.imageName>
+        <spring-boot.build-image.imageName>46.202.92.9:5000/entrando-acceso-datos:${project.version}</spring-boot.build-image.imageName>
     </properties>
     <dependencies>
         <dependency>

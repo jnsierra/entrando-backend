@@ -1,0 +1,248 @@
+networks:
+  keycloak-network:
+    driver: bridge
+  entrando-network:
+    driver: bridge
+#########################
+# INFRASTRUCTURE
+#########################
+services:
+#  postgres:
+#    image: postgres:16-alpine
+#    ports:
+#      - 5435:5432
+#    volumes:
+#      - ${VOL_PG}:/var/lib/postgresql/data
+#    environment:
+#      POSTGRES_PASSWORD: S3cret
+#      POSTGRES_USER: hashticket
+#      POSTGRES_DB: tickero
+#      PGDATA: /var/lib/postgresql/data
+#    healthcheck:
+#      test: [ "CMD-SHELL", "pg_isready -U hashticket -d tickero" ]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+#    networks:
+#      - entrando-network
+  postgres_kc:
+    image: postgres:16-alpine
+    ports:
+      - 5436:5432
+    volumes:
+      - ${VOL_PG_KC}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U keycloak_db_user -d keycloak_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+    networks:
+      - keycloak-network
+  keycloak:
+    image: keycloak-custom
+    command: start
+      
+    restart: always
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_HEALTH_ENABLED: true
+      KC_DB: postgres
+      KC_DB_USERNAME: ${POSTGRES_USER}
+      KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_DB_URL: jdbc:postgresql://postgreskc:5432/${POSTGRES_DB}
+      KC_FEATURES: token-exchange,admin-fine-grained-authz
+      KC_HOSTNAME_URL: https://localhost:8443/
+      KC_HTTPS_CERTIFICATE_FILE: /opt/keycloak/conf/server.crt
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /opt/keycloak/conf/server.key
+    healthcheck:
+      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8443' || exit 1
+      interval: 5s
+      timeout: 2s
+      retries: 200
+      start_period: 20s
+    networks:
+      - entrando-network
+      - keycloak-network
+    depends_on:
+      postgres_kc:
+        condition: service_healthy
+    volumes:
+      - ./etc/certs/server.crt:/opt/keycloak/conf/server.crt
+      - ./etc/certs/server.key:/opt/keycloak/conf/server.key
+#########################
+# SERVICE CLOUD
+#########################
+#  entrando-discovery:
+#    image: 46.202.92.9:5000/entrando-discovery:0.0.1-SNAPSHOT
+#    container_name: entrando-discovery
+#    ports:
+#      - "8762:8761"
+#    healthcheck:
+#      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8761' || exit 1
+#      interval: 2s
+#      timeout: 2s
+#      retries: 100
+#      start_period: 10s
+#    networks:
+#      - entrando-network
+#  entrando-config:
+#    image: 46.202.92.9:5000/entrando-config:0.0.4-SNAPSHOT
+#    container_name: entrando-config
+#    ports:
+#      - "8888:8888"
+#    healthcheck:
+#      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8888' || exit 1
+#      interval: 2s
+#      timeout: 2s
+#      retries: 100
+#      start_period: 10s
+#    networks:
+#      - entrando-network
+#  entrando-gateway:
+#    image: entrando/gateway:0.0.2
+#    container_name: entrando-gateway
+#    ports:
+#      - "5004:5004"
+#    healthcheck:
+#      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5004' || exit 1
+#      interval: 2s
+#      timeout: 2s
+#      retries: 100
+#      start_period: 10s
+#    environment:
+#      - CONFIG_SERVER=http://entrando-config:8888
+#      - SPRING_PROFILES_ACTIVE=dev
+#      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
+#    depends_on:
+#      entrando-discovery:
+#        condition: service_healthy
+#      entrando-datos:
+#        condition: service_healthy
+#      entrando-business:
+#        condition: service_healthy
+#    networks:
+#      - entrando-network
+#  jaeger:
+#    image: jaegertracing/all-in-one:latest
+#    container_name: jaeger
+#    environment:
+#      - COLLECTOR_OTLP_ENABLED=true
+#    ports:
+#      - "16686:16686"
+#      - "4317:4317"
+#      - "4318:4318"
+#    restart: always
+#    networks:
+#      - entrando-network
+#########################
+# MICROSERVICES
+#########################
+#  entrando-datos:
+#    image: 46.202.92.9:5000/entrando-acceso-datos:0.0.3-SNAPSHOT
+#    container_name: entrando-datos
+#    ports:
+#      - "5005:5005"
+#    healthcheck:
+#      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5005' || exit 1
+#      interval: 2s
+#      timeout: 2s
+#      retries: 100
+#      start_period: 10s
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=dev
+#      - CONFIG_SERVER=http://entrando-config:8888
+#      - DB_SERVER=postgres
+#      - DB_PORT=5432
+#      - KEYCLOAK_ISSUER_URI=http://keycloak:8080/realms/Keycloak_springboot
+#      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
+#      - TRACING_URL=http://jaeger:4318/v1/traces
+#    depends_on:
+#      postgres:
+#        condition: service_healthy
+#      entrando-config:
+#        condition: service_healthy
+#      keycloak:
+#        condition: service_healthy
+#      entrando-discovery:
+#        condition: service_healthy
+#    networks:
+#      - entrando-network
+#  entrando-business:
+#    image: entrando/business:0.0.1-SNAPSHOT
+#    container_name: entrando-business
+#    ports:
+#      - "5003:5003"
+#    healthcheck:
+#      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5003' || exit 1
+#      interval: 2s
+#      timeout: 2s
+#      retries: 100
+#      start_period: 10s
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=dev
+#      - CONFIG_SERVER=http://entrando-config:8888
+#      - KEYCLOAK_ISSUER_URI=http://keycloak:8080/realms/Keycloak_springboot
+#      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
+#      - PROTOCOL_DATA=http
+#      - HOST_DATA=entrando-datos
+#      - PORT_DATA=5005
+#      - TRACING_URL=http://jaeger:4318/v1/traces
+#      - BUSINESS_PATH_IMAGES=${VOL_CONT_BUSINESS_IMAGE}
+#    depends_on:
+#      entrando-config:
+#        condition: service_healthy
+#      keycloak:
+#        condition: service_healthy
+#      entrando-discovery:
+#        condition: service_healthy
+#      entrando-datos:
+#        condition: service_healthy
+#    networks:
+#      - entrando-network
+#    volumes:
+#      - ${VOL_BUSINESS_IMAGE}:${VOL_CONT_BUSINESS_IMAGE}
+#  entrando-public:
+#    image: entrando/public:0.0.1-SNAPSHOT
+#    container_name: entrando-public
+#    ports:
+#      - "5006:5006"
+#    healthcheck:
+#      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/5006' || exit 1
+#      interval: 2s
+#      timeout: 2s
+#      retries: 100
+#      start_period: 10s
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=dev
+#      - CONFIG_SERVER=http://entrando-config:8888
+#      - DISCOVERY_SERVER=http://entrando-discovery:8761/eureka/
+#      - TRACING_URL=http://jaeger:4318/v1/traces
+#      - DB_SERVER=postgres
+#      - DB_PORT=5432
+#    depends_on:
+#      postgres:
+#        condition: service_healthy
+#      entrando-config:
+#        condition: service_healthy
+#      entrando-discovery:
+#        condition: service_healthy
+#    networks:
+#      - entrando-network
+#    volumes:
+#      - ${VOL_BUSINESS_IMAGE}:${VOL_CONT_BUSINESS_IMAGE}

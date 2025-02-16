@@ -5,26 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76e460c7-011d-4a87-89a3-2c0755a728d9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/audit/AuditorAwareImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/config/JpaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/exception/CustomExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-docker/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-docker/README_KC.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-docker/docker-compose.yml_bk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-docker/images/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entrando-docker/ssl_auth.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/business/business-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/business/business-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-config/src/main/resources/config/datos/datos-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/src/main/resources/config/datos/datos-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/controller/DepartmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-config/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrando-discovery/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-discovery/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-docker/.env" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-docker/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entrando-docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/EventImagesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-entities/src/main/java/co/com/entrando/datos/repository/EventImagesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-public-users/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-public-users/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-public-users/src/main/java/co/com/entrando/pub/controller/EventImagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-public-users/src/main/java/co/com/entrando/pub/controller/EventImagesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-public-users/src/main/java/co/com/entrando/pub/service/impl/EventImagesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-public-users/src/main/java/co/com/entrando/pub/service/impl/EventImagesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/exception/enumeration/TYPE_EXCEPTION.java" beforeDir="false" afterPath="$PROJECT_DIR$/entrando-utiles/src/main/java/co/com/entrando/exception/enumeration/TYPE_EXCEPTION.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,30 +47,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.entrando-backend [clean,install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.EntrandoAccesoDatosApplication.executor": "Run",
-    "Spring Boot.EntrandoBusinessApplication.executor": "Debug",
-    "Spring Boot.EntrandoPublicUsersApplication (1).executor": "Run",
-    "Spring Boot.EntrandoPublicUsersApplication.executor": "Debug",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.entrando-backend [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EntrandoAccesoDatosApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.EntrandoBusinessApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.EntrandoPublicUsersApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EntrandoPublicUsersApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -146,14 +140,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.EntrandoAccesoDatosApplication" />
-      <item itemvalue="Spring Boot.EntrandoBusinessApplication" />
-      <item itemvalue="Spring Boot.EntrandoConfigApplication" />
-      <item itemvalue="Spring Boot.EntrandoDiscoveryApplication" />
-      <item itemvalue="Spring Boot.EntrandoGatewayApplication" />
-      <item itemvalue="Spring Boot.EntrandoPublicUsersApplication" />
-    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -175,7 +161,16 @@
       <workItem from="1731021420646" duration="6724000" />
       <workItem from="1731104796441" duration="214000" />
       <workItem from="1731105023635" duration="412000" />
-      <workItem from="1731105541946" duration="13822000" />
+      <workItem from="1731105541946" duration="14115000" />
+      <workItem from="1731468667653" duration="2347000" />
+      <workItem from="1736823004738" duration="1488000" />
+      <workItem from="1736899592527" duration="200000" />
+      <workItem from="1737070166227" duration="2168000" />
+      <workItem from="1737166361880" duration="2008000" />
+      <workItem from="1738116348126" duration="4112000" />
+      <workItem from="1738884735369" duration="8087000" />
+      <workItem from="1739240452429" duration="3183000" />
+      <workItem from="1739712830134" duration="4365000" />
     </task>
     <servers />
   </component>
@@ -204,6 +199,11 @@
           <url>file://$PROJECT_DIR$/entrando-public-users/src/main/java/co/com/entrando/pub/service/impl/EventImagesServiceImpl.java</url>
           <line>35</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/entrando-acceso-datos/src/main/java/co/com/entrando/datos/controller/DepartmentController.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

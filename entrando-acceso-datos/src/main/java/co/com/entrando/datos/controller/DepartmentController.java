@@ -34,7 +34,7 @@ public class DepartmentController {
                 .ok().body(DepartmentMapper.INSTANCE.map(response));
     }
     @GetMapping(value = "/{id}")
-    public ResponseEntity<DepartmentDto> get(@PathVariable Long id){
+    public ResponseEntity<DepartmentDto> get(@PathVariable("id") Long id){
         Optional<Department> response = departmentService.getById(id);
         if(!response.isPresent()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
